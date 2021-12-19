@@ -7,11 +7,11 @@ txtNombre.focus();
 const app = new Vue({
 	el: '#app',
 	data: {
-		titulo: 'Agenda Vue',
+		titulo: 'Agenda Pro',
 		contactos: [],
 		contactoNombre: '',
 		contactoTelefono: '',
-		contactoInsta: '',
+		contactoEmail: '',
 		seleccionado: false,
 	},
 	methods: {
@@ -20,9 +20,9 @@ const app = new Vue({
 			this.contactoTelefono = '';
 			this.contactoEmail = '';
 		},
-		// -- AGREGAR --
+		
 		agregarContacto: function () {
-			//Validaciones
+			
 			if (
 				this.contactoNombre === '' ||
 				this.contactoTelefono === '' ||
@@ -37,12 +37,12 @@ const app = new Vue({
 				});
 
 				this.limpiar();
-				localStorage.setItem('agenda-vue', JSON.stringify(this.contactos));
+				localStorage.setItem('agenda-pro', JSON.stringify(this.contactos));
 				let txtNombre = document.getElementById('txtNombre');
 				txtNombre.focus();
 			}
 		},
-		// -- MOSTRAR --
+		
 		mostrarContacto: function (index) {
 			if (this.contactoNombre === '') {
 				document.getElementById('boton-submit').disabled = true;
@@ -56,7 +56,7 @@ const app = new Vue({
 				document.getElementById('boton-submit').disabled = false;
 			}
 		},
-		// -- EDITAR --
+		
 		editarContacto: function (index) {
 			this.contactos[index].nombre = this.contactoNombre;
 			this.contactos[index].telefono = this.contactoTelefono;
@@ -64,17 +64,17 @@ const app = new Vue({
 			this.btnEdicion = 'Editar';
 			this.limpiar();
 
-			localStorage.setItem('agenda-vue', JSON.stringify(this.contactos));
+			localStorage.setItem('agenda-pro', JSON.stringify(this.contactos));
 		},
-		// -- ELIMINAR --
+		
 		eliminar: function (index) {
 			this.contactos.splice(index, 1);
-			localStorage.setItem('agenda-vue', JSON.stringify(this.contactos));
+			localStorage.setItem('agenda-pro', JSON.stringify(this.contactos));
 		},
 	},
-	// -- GUARDAR EN LOCAL --
+	
 	created: function () {
-		let datosDB = JSON.parse(localStorage.getItem('agenda-vue'));
+		let datosDB = JSON.parse(localStorage.getItem('agenda-pro'));
 		console.log(datosDB);
 
 		if (datosDB === null) {
