@@ -94,57 +94,40 @@
                     <hr class="star-primary">
                 </div>
             </div>
-            <div>
+            
+            <table
+						class="table table-light table-hover animate__animated animate__fadeIn"
+					>
+						<thead class="">
+							<tr class="head-table">
+								<th>Nombre</th>
+								<th>Número</th>
+								<th>Email</th>
+								<th></th>
+							</tr>
+						</thead>
 
-            <div class="row">
-                <div class="col-xs-4">
-                    <h4>Nombre</h4>
-                </div>
-                <div class="col-xs-4">
-                    <h4>Email</h4>
-                </div>
-                <div class="col-xs-3">
-                    <h4>Teléfono</h4>
-                </div>
-            </div>
-
-            <div class="rowCenter" v-for="(item, index) of contactos">
-
-                <div class="col-xs-4" :class= "[ item.seleccionado ? 'table-info' : ' ']">
-                    <br>
-                    {{item.nombre}}
-                    <br>
-                </div>
-
-                <div class="col-xs-4" :class= "[ item.seleccionado ? 'table-info' : ' ']">
-                    <br>
-                    {{item.email}}
-                    <br>
-                </div>
-
-                <div class="col-xs-3" :class= "[ item.seleccionado ? 'table-info' : ' ']">
-                    <br>
-                    {{item.telefono}}
-                    <br>
-                </div>
-
-                <div class="col-xs-1">
-
-                    <button
-                    class="btn btn-danger btn-sm" @click="eliminar(index)">
-                    <span class="glyphicon glyphicon-remove"></span>
-                        
-                    </button>
-                    <br>
-
-                    <button class="btn btn-primary boton"
-                        @click="mostrarContacto(index)"
-                    > Editar </button>
-
-                </div>
-
-            </div>
-            </div>
+						<tbody v-for="(item, index) of contactos">
+							<tr :class="[ item.seleccionado ? 'table-info' : ' ']">
+								<td>{{item.nombre}}</td>
+								<td>{{item.telefono}}</td>
+								<td>{{item.email}}</td>
+								<td>
+									<button
+										class="boton-edit btn btn-success btn-sm"
+										@click="mostrarContacto(index)"
+									> Editar </button>
+									
+									<button
+										class="boton-delete btn btn-danger btn-sm"
+										@click="eliminar(index)"
+									> Eliminar </button>
+								
+									
+								</td>
+							</tr>
+						</tbody>
+					</table>
         </div>
     </section>
 
@@ -167,11 +150,12 @@
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Nombre</label>
                                 <input
-                                        type="text"
-                                        id="txtNombre"
-                                        placeholder="Nombre"
-                                        v-model="contactoNombre"
-                                        v-on:keyup.enter="agregarContacto"  >
+									type="text"
+									id="txtNombre"
+									placeholder="Nombre"
+									v-model="contactoNombre"
+									v-on:keyup.enter="agregarContacto"
+								/>
 
                                 <p class="help-block text-danger"></p>
                             </div>
@@ -180,11 +164,12 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Email</label>
-                                <input 
-                                        type="email"
-                                        placeholder="Email"
-                                        v-model="contactoEmail"
-                                        v-on:keyup.enter="agregarContacto">
+                                <input
+									type="text"
+									placeholder="Email"
+									v-model="contactoEmail"
+									v-on:keyup.enter="agregarContacto"
+								/>
 
                                 <p class="help-block text-danger"></p>
                             </div>
@@ -193,12 +178,13 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Teléfono</label>
-                                <input 
-                                        type="text"
-                                        placeholder="Teléfono"
-                                        id="telefono"
-                                        v-model="contactoTelefono"
-                                        v-on:keyup.enter="agregarContacto">
+                                <input
+									type="text"
+									placeholder="Teléfono"
+									id="telefono"
+									v-model="contactoTelefono"
+									v-on:keyup.enter="agregarContacto"
+								/>
 
                                 <p class="help-block text-danger"></p>
                             </div>
@@ -214,7 +200,7 @@
                                             class="btn btn-primary boton"
                                             @click="agregarContacto"
 
-                                > Añadir</button>
+                                > Nuevo contacto</button>
                                 </div>
                         </div>
                     </form>
@@ -295,6 +281,7 @@
         </a>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <script src="js/jquery.mask.js"></script>
