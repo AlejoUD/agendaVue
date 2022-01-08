@@ -3,9 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Agenda">
     <meta name="author" content="e-ghost 2019">
+    <meta name="twitter:widgets:theme" content="dark">
+    <meta name="twitter:widgets:border-color" content="#55acee">
+
 
     <title>AgendaVue</title>
 
@@ -22,194 +25,201 @@
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    <!-- <[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <![endif] -->
+
 
 </head>
 
-<body id="page-top" class="index">
+<body >
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v12.0" nonce="AJTEoGym"></script>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Cambiar navegación</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#page-top">AgendaVue</a>
-            </div>
+        <div id="app" class="index">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-fixed-top">
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#contactos">Contactos</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#nuevo">Añadir contacto</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#social">Contenido social</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#about">Acerca de...</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+                <div class="container">
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-text">
-                        <span class="name">AgendaVue</span>
-                        <hr class="star-light">
-                        <span class="skills">Agenda básica en Vue</span>
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Cambiar navegación</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#page-top">AgendaVue</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="hidden">
+                                <a href="#page-top"></a>
+                            </li>
+                            <li class="page-scroll">
+                                <a href="#contactos">Contactos</a>
+                            </li>
+                            <li class="page-scroll">
+                                <a href="#nuevo">Añadir contacto</a>
+                            </li>
+                            <li class="page-scroll">
+                                <a href="#social">Contenido Social</a>
+                            </li>
+                            <li class="page-scroll">
+                                <a href="#about">Acerca de...</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+
+            <!-- Header -->
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="intro-text">
+                                <span class="name">AgendaVue</span>
+                                <hr class="star-light">
+                                <span class="skills">Agenda básica en Vue</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </header>
+            </header>
 
-    <!-- Contactos Grid Section -->
-    <section id="contactos">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Contactos</h2>
-                    <hr class="star-primary">
-                </div>
-            </div>
+            <!-- Contactos Grid Section -->
+
+        <div id="app-3">
             
-            <table
-						class="table table-light table-hover animate__animated animate__fadeIn"
-					>
-						<thead class="">
-							<tr class="head-table">
-								<th>Nombre</th>
-								<th>Número</th>
-								<th>Email</th>
-								<th></th>
-							</tr>
-						</thead>
-
-						<tbody v-for="(item, index) of contactos">
-							<tr :class="[ item.seleccionado ? 'table-info' : ' ']">
-								<td>{{item.nombre}}</td>
-								<td>{{item.telefono}}</td>
-								<td>{{item.email}}</td>
-								<td>
-									<button
-										class="boton-edit btn btn-success btn-sm"
-										@click="mostrarContacto(index)"
-									> Editar </button>
-									
-									<button
-										class="boton-delete btn btn-danger btn-sm"
-										@click="eliminar(index)"
-									> Eliminar </button>
-								
-									
-								</td>
-							</tr>
-						</tbody>
-					</table>
-        </div>
-    </section>
-
-     <!-- Añadir nuevo Section -->
-     <section id="nuevo">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Añadir contacto</h2>
-                    <hr class="star-primary">
+            <section id="contactos">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <h2>Contactos</h2>
+                            <hr class="star-primary">
+                        </div>
+                    </div>
+                    
+                    <table
+                                class="table table-light table-hover animate__animated animate__fadeIn"
+                            >
+                            <thead class="">
+                                <tr class="head-table">
+                                    <th>Nombre</th>
+                                    <th>Número</th>
+                                    <th>Email</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+        
+                                <tbody v-for="(item, index) of contactos">
+                                    <tr :class="[ item.seleccionado ? 'table-info' : ' ']">
+                                        <td> {{item.nombre}}</td>
+                                        <td>{{item.telefono}}</td>
+                                        <td>{{item.email}}</td>
+                                        <td>
+                                            <button
+                                                class="boton-edit btn btn-success btn-sm"
+                                                @click="mostrarContacto(index)"
+                                            > Editar </button>
+                                            
+                                            <button
+                                                class="boton-delete btn btn-danger btn-sm"
+                                                @click="eliminar(index)"
+                                            > Eliminar </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                 </div>
-            </div>
+            </section>
 
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <form name="sentMessage" id="contactForm" novalidate>
+            <!-- Añadir nuevo Section -->
+            <section id="nuevo">
 
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Nombre</label>
-                                <input
-									type="text"
-									id="txtNombre"
-									placeholder="Nombre"
-									v-model="contactoNombre"
-									v-on:keyup.enter="agregarContacto"
-								/>
-
-                                <p class="help-block text-danger"></p>
-                            </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <h2>Añadir contacto</h2>
+                            <hr class="star-primary">
                         </div>
+                    </div>
 
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Email</label>
-                                <input
-									type="text"
-									placeholder="Email"
-									v-model="contactoEmail"
-									v-on:keyup.enter="agregarContacto"
-								/>
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <form name="sentMessage" id="contactForm" novalidate>
 
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                                        <label>Nombre</label>
+                                        <input
+                                                type="text"
+                                                id="txtNombre"
+                                                placeholder="Nombre"
+                                                v-model="contactoNombre"
+                                                v-on:keyup.enter="agregarContacto"  >
 
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Teléfono</label>
-                                <input
-									type="text"
-									placeholder="Teléfono"
-									id="telefono"
-									v-model="contactoTelefono"
-									v-on:keyup.enter="agregarContacto"
-								/>
-
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-
-                        <br>
-                        <div id="success"></div>
-                        <div class="row">
-                                <div class="form-group col-xs-12">
-                                    
-                                    <button type="submit"
-                                            id="boton-submit"
-                                            class="btn btn-primary boton"
-                                            @click="agregarContacto"
-
-                                > Nuevo contacto</button>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
                                 </div>
+
+
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                                        <label>Teléfono</label>
+                                        <input 
+                                                type="text"
+                                                placeholder="Teléfono"
+                                                id="telefono"
+                                                v-model="contactoTelefono"
+                                                v-on:keyup.enter="agregarContacto">
+
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                                        <label>Email</label>
+                                        <input 
+                                                type="email"
+                                                placeholder="Email"
+                                                v-model="contactoEmail"
+                                                v-on:keyup.enter="agregarContacto">
+
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <div id="success"></div>
+                                <div class="row">
+                                        <div class="form-group col-xs-12">
+                                            
+                                            <button type="submit"
+                                                    id="boton-submit"
+                                                    class="btn btn-primary boton"
+                                                    @click="agregarContacto"
+
+                                        > Añadir</button>
+                                        </div>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-
+            </section>
+       
 
             <section class="success" id="social">
                 <div class="container">
@@ -221,121 +231,88 @@
                     </div>
                     <div class="row">
                         <div class="text-center">
-                            <blockquote class="twitter-tweet">
-                                <p lang="en" dir="ltr">Sunsets don&#39;t get much better than this one over <a href="https://twitter.com/GrandTetonNPS?ref_src=twsrc%5Etfw">@GrandTetonNPS</a>. <a href="https://twitter.com/hashtag/nature?src=hash&amp;ref_src=twsrc%5Etfw">#nature</a> <a href="https://twitter.com/hashtag/sunset?src=hash&amp;ref_src=twsrc%5Etfw">#sunset</a> <a href="http://t.co/YuKy2rcjyU">pic.twitter.com/YuKy2rcjyU</a></p>&mdash; US Department of the Interior (@Interior) <a href="https://twitter.com/Interior/status/463440424141459456?ref_src=twsrc%5Etfw">May 5, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                            
+                            <a class="twitter-timeline" data-width="1080" data-height="1920" data-theme="dark" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                         </div>
+                        <div class="fb-post" data-href="https://www.facebook.com/20531316728/posts/10154009990506729/" data-width="500" data-show-text="true"><blockquote cite="https://www.facebook.com/20531316728/posts/10154009990506729/" class="fb-xfbml-parse-ignore">Publicado por <a href="https://www.facebook.com/facebookapp/">Facebook App</a> en&nbsp;<a href="https://www.facebook.com/20531316728/posts/10154009990506729/">Jueves, 27 de agosto de 2015</a></blockquote></div> 
+                        
                     </div>
 
                     <div class="row">
                         <div class="text-center">
-                            <div id="fb-root"></div>
-                            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v12.0" nonce="UkJX52zg"></script>
-            
-                            <div class="fb-post" data-href="https://www.facebook.com/20531316728/posts/10154009990506729/" data-width="500" data-show-text="true"><blockquote cite="https://www.facebook.com/20531316728/posts/10154009990506729/" class="fb-xfbml-parse-ignore">Publicado por <a href="https://www.facebook.com/facebookapp/">Facebook App</a> en&nbsp;<a href="https://www.facebook.com/20531316728/posts/10154009990506729/">Jueves, 27 de agosto de 2015</a></blockquote></div>
-                            
+                             
                         </div>
                     </div>
                 
             
             </section>
-
-    <!-- About Section -->
-    <section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Acerca de...</h2>
-                    <hr class="star-light">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p>AgendaVue es un proyecto simple en VueJS.</p>
-                </div>
-            </div>
+            
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-center">
-        <div class="footer-above">
-            <div class="container">
-            </div>
-        </div>
-        <div class="footer-below">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        Copyleft &copy; e-ghost 2019
+            
+            <!-- About Section -->
+            <section class="success" id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <h2>Acerca de...</h2>
+                            <hr class="star-light">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <p>AgendaVue es un proyecto simple en VueJS.</p>
+                        </div>
                     </div>
                 </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="text-center">
+                <div class="footer-above">
+                    <div class="container">
+                    </div>
+                </div>
+                <div class="footer-below">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                Copyleft &copy; e-ghost 2019
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+            <div class="scroll-top page-scroll visible-xs visible-sm">
+                <a class="btn btn-primary" href="#page-top">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
             </div>
-        </div>
-    </footer>
 
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll visible-xs visible-sm">
-        <a class="btn btn-primary" href="#page-top">
-            <i class="fa fa-chevron-up"></i>
-        </a>
+            <!-- jQuery -->
+            <script src="js/jquery.js"></script>
+
+            <!-- Bootstrap Core JavaScript -->
+            <script src="js/bootstrap.min.js"></script>
+
+            <!-- Plugin JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+            <script src="js/classie.js"></script>
+            <script src="js/cbpAnimatedHeader.js"></script>
+
+            <!-- Custom Theme JavaScript -->
+            <script src="js/freelancer.js"></script>
+            
+            <!-- Vue -->
+            <script src="js/vue.js"></script>   
+
+            <script src="js/main.js"></script>
+
+           
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery.mask.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/cbpAnimatedHeader.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/freelancer.js"></script>
-    
-    <!-- Vue -->
-    <script src="js/vue.js"></script> 
-
-    
-
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-store.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyDI1ZBoSy6hm4frR8h12EpW41VkFAxE9IQ",
-          authDomain: "agenda-a1593.firebaseapp.com",
-          databaseURL: "https://agenda-a1593-default-rtdb.europe-west1.firebasedatabase.app",
-          projectId: "agenda-a1593",
-          storageBucket: "agenda-a1593.appspot.com",
-          messagingSenderId: "163135916641",
-          appId: "1:163135916641:web:ed6268b4c5afe0220b3820",
-          measurementId: "G-YQ5KDM4LYC"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-      </script>
-
-    <script src="js/db.js"></script>
-
-    <script src="js/index.js"></script>
-
-    
-    
-    
-
 </body>
 
 </html>
+
+
+
