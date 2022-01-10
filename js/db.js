@@ -23,6 +23,9 @@ export default {
     methods: {
         enviarContacto(){
             namesref.push({nombre: this.nombre, telefono: this.telefono, email: this.email})
+        },
+        eliminarContacto(){
+            namesref.push(null)
         }
     }
 }
